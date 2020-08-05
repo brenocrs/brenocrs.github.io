@@ -8,7 +8,7 @@ description: >- # this means to ignore newlines until "baseurl:"
   Some notes and thoughts about technology.
 url: "https://brenocrs.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 show_excerpts: true # set to true to show excerpts on the homepage
-theme: minima
+theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
