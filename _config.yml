@@ -12,15 +12,14 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-disqus:
-  shortname: http-brenocrs-github-io.disqus.com
+
 header_pages:
   - about.md
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:   
+minima:
   date_format: "%b %-d, %Y"
-  
+  skin: classic
   social_links:
     github:  brenocrs
     linkedin: brenocesar
