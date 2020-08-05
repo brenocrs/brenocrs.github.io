@@ -1,0 +1,14 @@
+I"{<p>This is my Firts blog post, please be kind =)</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">sys</span>
+<span class="k">if</span> <span class="n">sys</span><span class="p">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="s">'hi'</span><span class="p">:</span>
+   <span class="k">print</span><span class="p">(</span><span class="s">"Hello World !!"</span><span class="p">)</span>
+</code></pre></div></div>
+<p>My name is Breno, i’m pasionate for technology in an general matter.
+<br />
+I created this blog to share some interesting thing that i learned im my day-by-day.</p>
+
+<p>Follow me on <a href="https://www.linkedin.com/in/brenocesar/">linkedin</a></p>
+
+<p>Hope you enjoy !</p>
+:ET

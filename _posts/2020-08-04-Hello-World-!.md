@@ -2,6 +2,7 @@
 layout: post
 title:  "Hello World !"
 categories: about
+date:   2020-08-04 22:45:15 -0300
 ---
 This is my Firts blog post, please be kind =)
 

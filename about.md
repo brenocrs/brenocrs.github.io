@@ -3,8 +3,12 @@ layout: page
 title: About
 permalink: /about/
 ---
-# Hello World
 
+```python
+import sys
+if sys.argv[1] == 'hi':
+   print("Hello World !!")
+```
 
 My name is Breno, i'm pasionate for technology in an general matter.
 <br>
