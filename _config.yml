@@ -11,11 +11,12 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-minima:
+
 # Minima date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
-minima:
-   date_format: "%b %-d, %Y"
-   social_links:
+minima:   
+  skin: dark
+  date_format: "%b %-d, %Y"
+  social_links:
     github:  brenocrs
     linkedin: brenocesar
