@@ -3,7 +3,7 @@ layout: post
 title:  "Hello World !"
 categories: about
 ---
-# Hello World
+This is my Firts blog post, please be kind =)
 
 ```python
 import sys
