@@ -1,5 +1,6 @@
 ---
 layout: post
+author: Breno Cesar
 title:  "Hello World !"
 subtitle: "This is my Firts blog post, please be kind =)"
 categories: about
