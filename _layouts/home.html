@@ -31,8 +31,9 @@ layout: default
             {{ post.title | escape }}
           </a>
         </h3>
+<!-- Changed post.excerpt to post.subtitle to show the custom front matter on each post -->
         {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
+          {{ post.subtitle }}
         {%- endif -%}
       </li>
       {%- endfor -%}
