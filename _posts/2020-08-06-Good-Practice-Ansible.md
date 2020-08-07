@@ -21,7 +21,9 @@ The common and fast response to that problem is:
   shell: /some/shell/or/script/to/get/the/info/command
   register: my_var
 ```
+
 - Use the output of that variable as statement when running the desired command, providing specific path or extra information:
+
 ```yaml
 - name: Running my command on CentOS
   shell: command
@@ -43,6 +45,7 @@ The common and fast response to that problem is:
     chdir: /my_path/in/Solaris/
   when: '"Solaris" in my_var.stdout'  
 ```
+
 There is no problem for a couple of simple task like these executing in this way.
 
 But in cases were your automation have alot of task , probably you will face some issues like:
