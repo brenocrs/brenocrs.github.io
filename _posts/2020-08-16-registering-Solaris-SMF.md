@@ -136,10 +136,10 @@ Until now our block configuration look's like this.
         </dependency>
         <method_context working_directory='/home/karson'>
             <method_credential user="karlson" group="other" />
+            <method_environment>
+              <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
+            </method_environment>
         </method_context>
-        <method_environment>
-            <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
-        </method_environment>
 .
 .
 .
@@ -202,10 +202,10 @@ Finaly our app will be configured in the my-app.xml file as a deamon service, so
         </dependency>
         <method_context working_directory='/home/karson'>
             <method_credential user="karlson" group="other" />
+            <method_environment>
+              <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
+            </method_environment>
         </method_context>
-        <method_environment>
-            <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
-        </method_environment>
         <exec_method timeout_seconds="60" type="method" name="start" exec="/home/karson/my-app.sh -c /home/karson/my-app.conf"/>
         <exec_method timeout_seconds="60" type="method" name="stop" exec=":kill"/>
         <exec_method timeout_seconds="60" type="method" name="refresh" exec=":true"/>
