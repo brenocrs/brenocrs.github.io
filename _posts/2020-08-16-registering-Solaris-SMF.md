@@ -14,7 +14,7 @@ To manage all those services and deamons, in systemd linux system whe have syste
 <br>
 SMF use a xml file to configure all the services, if you want to know how a service is configure, you can just type:
 <br>
-```command
+```
 -bash-3.2# svccfg export -a /system/cron
 ```
 
@@ -63,7 +63,7 @@ It will print out a XML file that show's up how this service is configured:
   </service>
 </service_bundle>
 ```
-Looking this file, it's hard to debug and understand ho it works , but here i will compiling the most usual configurations that you need to know for configuring your own SMF service.
+Looking this file, it's hard to debug and understand how it works , but here i will compiling the most usual configurations that you need to know for configuring your own SMF service.
 <br>
 Below i will show to ho configure a script called "my-application" in the smf, and which are the keys part to do so.
 <br>
@@ -72,7 +72,7 @@ Firs we need to create a file called "my-app.xml" and than configure each step a
 
 ### 1 - Header
 
-The first thing you need to do is configure the name of your new service, ann this going in to the ```name``` option under ```service_bundle``` and ```service``` section.
+The first thing you need to do is configure the name of your new service, and this going in to the ```name``` option under ```service_bundle``` and ```service``` section.
 All other options can let be standart as showed bellow.
 ```xml
 <?xml version="1.0" ?>
@@ -88,7 +88,8 @@ All other options can let be standart as showed bellow.
 ```
 
 ### 2 - Dependency
-Here we will not waste too much time, basicaly 99,99% of all script/software start only when a environment is runnig under a multi user level / rc.3 / init 3 or what ever you call it in your system, so our xml configuration will be very stander until here:
+Here we will not waste too much time, basicaly 99,99% of all script/software start only when a environment is runnig under a multi user level / rc.3 / init 3 or what ever you call it in your system.
+This is configured under the ```dependency``` section.
 ```xml
 <?xml version="1.0" ?>
 <!DOCTYPE service_bundle
@@ -107,9 +108,10 @@ Here we will not waste too much time, basicaly 99,99% of all script/software sta
 ### 3 - User, Enivonment Variable and Path
 
 Here is where the magic starts, if you what to specify globally:
-- Which user/group from the system the app will be executed.
-- Which environment varibale should be used.
-- Which path the script should be executed.
+- Which user/group from the system the app will be executed: ```method_credential``` section.
+- Which path the script should be executed:```method_context``` section.
+- Which environment variable should be used: ```method_environment``` section.
+
 Let's supose that the my-application should be executed with a user called "karlson" in the group "other" over a path "/home/karson" so the block configuration should be like:
 ```xml
 <method_context method_context working_directory='/home/karson'>
@@ -146,18 +148,20 @@ Until now our block configuration look's like this.
 ```
 ### 4 - Script execution
 Here we specify how the script should be executed, there is a lot of variation for that, but i will show the 2 most common.
+<br>
+
 #### 4.1 - Start/Stop script
-For a scrpt that you need to inform a the input a parameter like **start** or **stop**, just use the block bellow:
+For a script that you need to inform a input a parameter like **start** or **stop**, just use the block bellow:
 
 ```xml
 <exec_method timeout_seconds="60" type="method" name="start" exec="/home/karson/my-app.sh %m"/>
 <exec_method timeout_seconds="60" type="method" name="stop" exec="/home/karson/my-app.sh %m"/>
 <exec_method timeout_seconds="60" type="method" name="refresh" exec=":true"/>
 ```
-obs: Note that you can user varibles like ```%m``` to specify which input you will use for every method
+obs: Note that you can user varibles like ```%m``` to specify which input you will use for every method.
 
 #### 4.2 - Daemon script
-For a scrpt that run's as a deamon and should be maintained executing, just use the block bellow:
+For a script that is executed as a deamon and should be maintained executing, just use the block bellow:
 
 ```xml
 <exec_method timeout_seconds="60" type="method" name="start" exec="/home/karson/my-app.sh -c /home/karson/my-app.conf"/>
@@ -165,9 +169,9 @@ For a scrpt that run's as a deamon and should be maintained executing, just use 
 <exec_method timeout_seconds="60" type="method" name="refresh" exec=":true"/>
 ```
 
-### 5 - Inform the name and description 
+### 5 - Setting the name and description 
 
-Inform to the smf the name and description for your script, so every user that type "svcs" ofr your script will knwo that is about.
+Inform to the smf the name and description for your script, so every user that type ```svcs -l my-app``` for your script will know what is about our script.
 For that, we will use the block bellow
 
 ```xml
@@ -185,7 +189,7 @@ For that, we will use the block bellow
 </template>
 ```
 ### 6 - Importing the configuration on SMF
-Finaly our app will be configured in the my-app.xml as a deamon service:
+Finaly our app will be configured in the my-app.xml file as a deamon service, so the resulting file will looks like:
  
 ```xml
 <?xml version="1.0" ?>
@@ -222,12 +226,12 @@ Finaly our app will be configured in the my-app.xml as a deamon service:
 ```
 
 Lets import it with the command bellow:
-```command
+```
 -bash-3.2# svccfg import ./my-app.xml
 ```
 
 And then start our script:
-```command
+```
 -bash-3.2# svcadm enable my-application
 ```
 
