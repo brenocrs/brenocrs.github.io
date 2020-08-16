@@ -114,15 +114,21 @@ Here is where the magic starts, if you what to specify globally:
 
 Let's supose that the my-application should be executed with a user called "karlson" in the group "other" over a path "/home/karson" so the block configuration should be like:
 ```xml
-<method_context method_context working_directory='/home/karson'>
+<method_context working_directory='/home/karson'>
     <method_credential user="karlson" group="other" />
+.
+.
+.
 </method_context>
 ```
 And for everything that SMF will execute in our script, we will user this java home environment variable:
 ```xml
-<method_environment>
-    <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
-</method_environment>
+<method_context working_directory='/home/karson'>
+    <method_credential user="karlson" group="other" />
+    <method_environment>
+        <envvar name="JAVA_HOME" value="/usr/jdk/instances/jdk1.8.0" />
+    </method_environment>
+</method_context>
 ```
 Until now our block configuration look's like this.
 ```xml
