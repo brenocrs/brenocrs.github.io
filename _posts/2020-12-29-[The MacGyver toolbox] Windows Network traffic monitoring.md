@@ -95,19 +95,19 @@ Probably what i sayed it's wrong because is based on my user perception, so you 
 
 With our file created, we need to make a something to get the interface id from the cmdlet [Get-NetAdapter](https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapter?view=win10-ps), and pass that information to [Get-NetAdapterStatistics](https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapterstatistics?view=win10-ps) to get the network traffic statistcs.
 <br>
-##1.1 Getting the network interfaces on windows
+## 1.1 Getting the network interfaces on windows
 ```powershell
 $ADAPTER = (Get-NetAdapter | Select-Object @('InterfaceDescription','ifIndex'))
 ```
-##1.2 Printing the network interfaces
+## 1.2 Printing the network interfaces
 ```powershell
 $ADAPTER | Format-Table | Write-Output
 ```
-##1.3 Prompting for user to select the network interfaces
+## 1.3 Prompting for user to select the network interfaces
 ```powershell
 $NETWORK_CARD = (Read-Host -Prompt "Input the ifIndex for monitoring ")
 ```
-##1.4 Getting the selected network interface description
+## 1.4 Getting the selected network interface description
 ```powershell
 $NETWORK_CARD_DESCRIPTION = (Get-NetAdapter -ifIndex $NETWORK_CARD | select-object -exp InterfaceDescription)
 ```
