@@ -15,7 +15,7 @@ During the covid-19 world pandemic, a lot of our human work force was obligated 
 >-- <cite>[World Bank](https://www.worldbank.org/en/news/feature/2020/06/08/the-global-economic-outlook-during-the-covid-19-pandemic-a-changed-world)</cite>
 
 <br>
-Then as a professionals from engeneering department, i knew that more than enever before, i needed to do and deploy more, with a less(or any) resources.
+Then as a professionals from engineering department, i knew that more than enever before, i needed to do and deploy more, with a less(or any) resources.
 <br>
 Sometimes, we have a lot of tools avaliable, but we dont use it for a lot of reasons, and sometimes, we spend money and resource to deploy some function/facility that was already avaliable on our systems, but in another format.
 <br>
@@ -62,7 +62,7 @@ vEthernet (WSL)                      137032651                  73436        649
 Wi-Fi                                548825411                 437865        29951278             124685
 ```
 <br>
-Observe that those cmdlet will bring all the interfaces avaliable on your windows, but it will bring the data as a "BYTE" format, as a telecom engeneer, i need this data in "BIT" format, so, lets create a script where:
+Observe that those cmdlet will bring all the interfaces avaliable on your windows, but it will bring the data as a "BYTE" format, as a telecom engineer, i need this data in "BIT" format, so, lets create a script where:
 <br>
 1. Select the interface to monitoring
 <br>
