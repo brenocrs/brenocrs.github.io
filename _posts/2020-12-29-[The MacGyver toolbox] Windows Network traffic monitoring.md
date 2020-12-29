@@ -112,7 +112,7 @@ $NETWORK_CARD = (Read-Host -Prompt "Input the ifIndex for monitoring ")
 $NETWORK_CARD_DESCRIPTION = (Get-NetAdapter -ifIndex $NETWORK_CARD | select-object -exp InterfaceDescription)
 ```
 <br>
-#2. Collect the interface data
+## 2. Collect the interface data
 <br>
 For that , is just to create a new variables that we pass to then the result from "NETWORK_CARD" variable that we created before:
 ```powershell
@@ -128,7 +128,7 @@ $ACTUAL_TX = (Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics |
 <br>
 Note that we filter and register the result from received and transmited in different variables
 <br>
-#3. Transform the collected data to bit format
+## 3. Transform the collected data to bit format
 <br>
 For that we multiplicate by 8 and divide by 1MB.
 <br>
@@ -143,7 +143,7 @@ $ACTUAL_TX = ((Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics 
 # Transforming the data ^^^
 ```
 <br>
-#4. Calculate the DELTA and print the result
+## 4. Calculate the DELTA and print the result
 
 As you can see, the data ploted by  [Get-NetAdapterStatistics](https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapterstatistics?view=win10-ps) is a cumulative information, so we need to calculate a delta:
 <br>
@@ -271,7 +271,7 @@ Intel(R) Wireless-AC 9560 160MHz -> RX: 0,33 Mbps TX:12,38 Mbps
 Intel(R) Wireless-AC 9560 160MHz -> RX: 0,31 Mbps TX:11,11 Mbps
 ```
 <br>
-#5. Paperclip+Bubblegum+Silvertape
+## 5. Paperclip+Bubblegum+Silvertape
 <br>
 Here are some of the sources that i use to create this project:
 
