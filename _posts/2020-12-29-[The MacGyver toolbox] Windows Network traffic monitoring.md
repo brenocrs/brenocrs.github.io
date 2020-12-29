@@ -117,6 +117,7 @@ $NETWORK_CARD_DESCRIPTION = (Get-NetAdapter -ifIndex $NETWORK_CARD | select-obje
 
 <br>
 For that , is just to create a new variables that we pass to then the result from "NETWORK_CARD" variable that we created before:
+
 ```powershell
 $ADAPTER = (Get-NetAdapter | Select-Object @('InterfaceDescription','ifIndex'))
 $ADAPTER | Format-Table | Write-Output
@@ -127,6 +128,7 @@ $ACTUAL_RX = (Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics |
 $ACTUAL_TX = (Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics | select-object -exp SentBytes)
 # Collecting the data ^^^
 ```
+
 <br>
 Note that we filter and register the result from received and transmited in different variables
 <br>
@@ -136,6 +138,7 @@ Note that we filter and register the result from received and transmited in diff
 <br>
 For that we multiplicate by 8 and divide by 1MB.
 <br>
+
 ```powershell
 $ADAPTER = (Get-NetAdapter | Select-Object @('InterfaceDescription','ifIndex'))
 $ADAPTER | Format-Table | Write-Output
@@ -146,6 +149,7 @@ $ACTUAL_RX = ((Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics 
 $ACTUAL_TX = ((Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics | select-object -exp SentBytes)*8)/1MB
 # Transforming the data ^^^
 ```
+
 <br>
 
 ## 4. Calculate the DELTA and print the result
@@ -153,10 +157,12 @@ $ACTUAL_TX = ((Get-NetAdapter -ifIndex $NETWORK_CARD | Get-NetAdapterStatistics 
 <br>
 As you can see, the data ploted by  [Get-NetAdapterStatistics](https://docs.microsoft.com/en-us/powershell/module/netadapter/get-netadapterstatistics?view=win10-ps) is a cumulative information, so we need to calculate a delta:
 <br>
+
 ```powershell
 $PRINTRXBITS = $ACTUAL_RX - $LAST_RX
 $PRINTTXBITS = $ACTUAL_TX - $LAST_TX
 ```
+
 <br>
 But how to do that if we didn't collected the latest data from RX/TX ? Are we going to back in time ?
 <br>
@@ -175,6 +181,7 @@ For that, we need to create a loop, where:
 4. Save the collected data in another variable for the next delta calculation
 <br>
 Then:
+
 ```powershell
 $ADAPTER = (Get-NetAdapter | Select-Object @('InterfaceDescription','ifIndex'))
 $ADAPTER | Format-Table | Write-Output
@@ -198,6 +205,7 @@ while($true)
 	sleep 0.7
 }
 ```
+
 <br>
 If you execute the script you will notice that the first print will provide incorrect data.
 <br>
@@ -253,6 +261,7 @@ while($true)
 	sleep 0.7
 }
 ```
+
 <br>
 So now, we have a script to monitoring throught terminal the network traffic:
 <br>
@@ -276,6 +285,7 @@ Intel(R) Wireless-AC 9560 160MHz -> RX: 0,36 Mbps TX:12,28 Mbps
 Intel(R) Wireless-AC 9560 160MHz -> RX: 0,33 Mbps TX:12,38 Mbps
 Intel(R) Wireless-AC 9560 160MHz -> RX: 0,31 Mbps TX:11,11 Mbps
 ```
+
 <br>
 
 ## 5. Paperclip+Bubblegum+Silvertape
