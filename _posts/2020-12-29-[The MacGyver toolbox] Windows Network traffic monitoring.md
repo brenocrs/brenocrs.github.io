@@ -73,7 +73,7 @@ Observe that those cmdlet will bring all the interfaces avaliable on your window
 4. Calculate the DELTA and print the result
 <br>
 
-If you dont want to read and understant all this article, you can download the script [here](https://github.com/brenocrs/WinPrintTraffic) on my github.
+If you dont want to read and understand all this article, you can download the script [here](https://github.com/brenocrs/WinPrintTraffic) on my github.
 
 
 ## 0. A quick and fast guide to powershell
