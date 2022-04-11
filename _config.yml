@@ -12,6 +12,7 @@ theme: jekyll-theme-minimal
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+google_analytics: G-DZWPL6QJ1H
 
 header_pages:
   - about.md
